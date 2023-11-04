@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/ayezashaikh/config-repo
+          clone-on-start: true
+management:
+  security:
+    enabled: false
+server:
+  port: 8081
