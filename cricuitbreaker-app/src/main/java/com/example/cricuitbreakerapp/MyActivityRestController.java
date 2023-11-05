@@ -20,7 +20,7 @@ public class MyActivityRestController {
 		Activity body = forEntity.getBody();
 		String activity = body.getActivity();
 		return activity;
-	}
+	}	
 
 	public String doWork(Throwable t) {
 		
