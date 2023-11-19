@@ -21,20 +21,16 @@ import java.util.Map;
 public class KafkaConsumerConfig {
 
     @Bean
-    ConsumerFactory<String, Order> consumerFactory() {
+    ConsumerFactory<String, String> consumerFactory() {
 
-        Map<String, String> configProp = new HashMap<>();
+        Map<String, Object> configProp = new HashMap<>();
 
         configProp.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, AppConstant.HOST);
 /*
         configProp.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         configProp.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
 */
-
-        StringDeserializer stringDeserializer = new StringDeserializer();
-        JsonDeserializer jsonDeserializer = new JsonDeserializer();
-        jsonDeserializer.addTrustedPackages("com.kafka.example.model.Order");
-        return new DefaultKafkaConsumerFactory<>(configProp, stringDeserializer, stringDeserializer);
+        return new DefaultKafkaConsumerFactory<String,String>(configProp, new StringDeserializer(), new StringDeserializer());
     }
 
 
